@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit employee</title>
+  </head>
+  <body>
+    <a href="/">Home</a>
+    <h1>Edit the Employee</h1>
+    <!-- http request -->
+    <!-- Get -->
+    <!-- post -->
+    <form action="/employees/<%= employee._id %>?_method=put" method="post">
+      <div>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" value="<%= employee.name %>" />
+      </div>
+
+      <div>
+        <label for="age">Age</label>
+        <input type="number" id="age" name="age" value="<%= employee.age %>" />
+      </div>
+
+      <div>
+        <label for="phone">Phone</label>
+        <input
+          type="number"
+          id="phone"
+          name="phone"
+          value="<%= employee.phone %>"
+        />
+      </div>
+
+      <div>
+        <label for="address">Adress</label>
+        <input
+          type="text"
+          id="address"
+          name="address"
+          value="<%= employee.address %>"
+        />
+      </div>
+      <div>
+        <label for="salary">Salary</label>
+        <input
+          type="number"
+          id="salary"
+          name="salary"
+          value="<%= employee.salary %>"
+        />
+      </div>
+      <div>
+        <label for="employeeCode">Employee Code</label>
+        <input
+          type="number"
+          id="employeeCode"
+          name="employeeCode"
+          value="<%= employee.employeeCode %>"
+        />
+      </div>
+      <button>Submit</button>
+    </form>
+  </body>
+</html>
