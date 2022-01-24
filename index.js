@@ -24,6 +24,15 @@ const connectionString =
   "mongodb+srv://noaman_saleem:nomibhai@cluster0.3y0uf.mongodb.net/abcLTD?retryWrites=true&w=majority";
 
 //Routes
+//RESTFUL Routes
+//  TASK                    |   ROUTE             | METHOD
+//  READ                      /employees              GET
+//  CREATE                    /employees              POST
+//  UPDATE                    /employees/:id          PUT
+//  DELETE                    /employees/:id          DELETE
+//  NEW EMPLOYEE FORM         /employees/new          GET
+//  UPDATE EMPLOYEE FORM      /employees/:id/edit     GET
+
 //INDEX ROUTE
 app.get("/", (req, res) => {
   res.render("index");
@@ -77,9 +86,23 @@ app.delete("/employees/:id", async (req, res) => {
 
 //RENDER UPDATE INFO FORM
 //METHOD --> GET
+app.get("/employees/:id/edit", async (req, res) => {
+  const employee = await Employee.findById(req.params.id);
+  res.render("employees/edit-employee.ejs", { employee });
+});
 
 //UPDATE EMPLOYEE
 //METHOD --> PUT
+app.put("/employees/:id", async (req, res) => {
+  const updatedEmployee = await Employee.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    {
+      new: true,
+    }
+  );
+  res.redirect("/employees");
+});
 
 //SHOW EMPLOYEE DETAILS
 //METHOD -->GET
